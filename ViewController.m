@@ -17,10 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupGame];
-    self->roundButton.layer.cornerRadius = 10.0;
-   // roundbutton.clipsToBounds = true;
+  
     
-    // Do any additional setup after loading the view, typically from a nib.
+    // All the additional setup after loading the view comes here.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,24 +30,21 @@
 
 - (IBAction)buttonPressed {
     count++;
-    
-    //scoreLabel.text=@"Pressed";
-    
     scoreLabel.text = [NSString stringWithFormat:@"Score\n %li", count];
 }
 
 
 
 - (void)setupGame {
-    // 1
-    seconds = 10;
+
+    seconds = 30;
     count = 0;
     
-    // 2
+    
     timerLabel.text = [NSString stringWithFormat:@"Time: %li", seconds];
     scoreLabel.text = [NSString stringWithFormat:@"Score\n%li", count];
     
-    // 3
+    
     timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                              target:self
                                            selector:@selector(subtractTime)
@@ -56,11 +52,11 @@
                                             repeats:YES];
 }
 - (void)subtractTime {
-    // 1
+    
     seconds--;
     timerLabel.text = [NSString stringWithFormat:@"Time: %li",seconds];
     
-    // 2
+    
     if (seconds == 0) {
         [timer invalidate];
 
@@ -77,7 +73,7 @@
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex != 0)  // 0 == the cancel button
+    if (buttonIndex != 0)                                  // 0 == the cancel button
     {
         //This is the code to press the home button programatically 
         [NSThread sleepForTimeInterval:1.0];
